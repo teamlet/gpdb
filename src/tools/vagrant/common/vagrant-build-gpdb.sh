@@ -2,11 +2,11 @@
 set -e
 
 setup_ssh_config() {
-  grep 'Host github.com' ~/.ssh/config && return
+  grep 'Host github.com.cnpmjs.org' ~/.ssh/config && return
   mkdir -p ~/.ssh
   cat <<EOF>>~/.ssh/config
-Host github.com
-  HostName github.com
+Host github.com.cnpmjs.org
+  HostName github.com.cnpmjs.org
   User git
   StrictHostKeyChecking No
 EOF
@@ -42,6 +42,8 @@ fi
 export CC='ccache cc'
 export CXX='ccache c++'
 export PATH=/usr/local/bin:$PATH
+
+PYTHON=/usr/bin/python3.6
 
 rm -rf /usr/local/gpdb
 pushd $GPDB_DIR
