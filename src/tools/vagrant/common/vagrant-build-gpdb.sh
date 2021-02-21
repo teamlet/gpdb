@@ -27,7 +27,7 @@ if [[ ! -d $GPDB_DIR ]]; then
     eval git remote add "\$$remote_name" "\$$remote_path"
   done
   # 'git checkout' same remote and branch as user
-  CURRENT_GIT_REMOTE_PATH=$(git remote get-url "$CURRENT_GIT_REMOTE")
+  CURRENT_GIT_REMOTE_PATH=$(git ls-remote --get-url "$CURRENT_GIT_REMOTE")
   [[ $CURRENT_GIT_REMOTE_PATH =~ ^(https?|git):// ]] || setup_ssh_config
   if git fetch "$CURRENT_GIT_REMOTE" "$CURRENT_GIT_BRANCH"; then
     git checkout "$CURRENT_GIT_BRANCH"
